@@ -1,0 +1,20 @@
+{
+    "products":[
+        {
+            "id":1,
+            "title":"Playera básica",
+            "image":"https://image.hm.com/assets/hm/ef/0c/ef0c6957df141cde4f240b9a897f86c37b47fa53.jpg?imwidth=2160",
+            "alt-image":"https://image.hm.com/assets/hm/d8/2e/d82e3cb138182c01b8c3d2bcce627e780015ccab.jpg?imwidth=2160",
+            "description":"Playera básica color café",
+            "price":299
+        },
+        {
+            "id":2,
+            "title":"Abrigo",
+            "image":"https://image.hm.com/assets/hm/aa/d1/aad15bcb0f08df6c93fc85b220336bebe0e9f36e.jpg?imwidth=2160",
+            "alt-image":"https://image.hm.com/assets/hm/1d/6f/1d6f0c8c6b3309a196ce7353b485f73122db706c.jpg?imwidth=2160",
+            "description":"Playera básica color café",
+            "price":499
+        }
+    ]
+}
