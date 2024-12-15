@@ -28,7 +28,7 @@ body {
 
 .card-content:hover {
   transform: translateY(-8px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
 .card-content img {
@@ -52,13 +52,13 @@ body {
 
 .card-content button:hover {
   background-color: #c0392b;
-    transform: translateY(-2px);
+  transform: translateY(-2px);
 }
 
 .navbar {
   display: flex;
   justify-content: space-evenly;
-  background-color: #ffc30f;
+  background-color: #4990e2;
 }
 
 .navbar-button {
@@ -66,18 +66,89 @@ body {
   padding: 0.5rem;
   border: none;
   border-radius: 5px;
-  background-color: #581845;
+  background-color: #4990e2;
   color: white;
   font-size: 16px;
   cursor: pointer;
 }
 
 .navbar-button:hover {
-  background-color: aliceblue;
-  color: black;
+  background-color: #84acd4;
 }
 
 .navbar-button:active {
   background-color: antiquewhite;
   color: black;
 }
+
+.modal {
+  position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.form-container {
+  width: 100%;
+  max-width: 500px;
+  margin: 30px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.input-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #333;
+  transition: border 0.3s;
+  box-shadow: 0.3s;
+  box-sizing: border-box;
+}
+
+.input-group input:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 8ox rgba(52, 152, 219, 0.3);
+}
+
+.input-group label {
+  font-weight: bold;
+  color: #333;
+  font-size: 14px;
+}
+
+.form-container button {
+  width: 100%;
+    padding: 12px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor:pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    box-sizing: border-box;
+}
+.form-container button:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+}
+

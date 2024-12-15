@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import { userContext } from "../context/userContext";
 import { users } from "../mocks/users.json";
-import "../css/login.css";
 
 export default function Login() {
   const { setUser, setShowLoginModal } = useContext(userContext);
@@ -30,16 +29,18 @@ export default function Login() {
 
   return (
     <div className="modal">
-      <div className="modal-content">
+      <div className="form-container">
         <button onClick={()=> setShowLoginModal(false)}>x</button>
-        <h2>Iniciar Sesión</h2>
         <form onSubmit={handleLogin}>
+        <h2>Iniciar Sesión</h2>
+        <div className="input-group">
           <label htmlFor="email">Email</label>
           <input
             type="text"
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            placeholder="Ingresa tu email"
           />
 
           <label htmlFor="password">Password</label>
@@ -48,8 +49,9 @@ export default function Login() {
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            placeholder="Ingresa tu contraseña"
           />
-
+          </div>
           <button type="submit">Login</button>
         </form>
       </div>

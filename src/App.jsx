@@ -12,7 +12,7 @@ export default function App() {
   return (
     <div className="App">
       <Navbar/>
-      {showLoginModal ? (<Login/>):(<h1></h1>)}
+      {showLoginModal && <Login/>}
       <ShirtCard/>
     </div>
   )
