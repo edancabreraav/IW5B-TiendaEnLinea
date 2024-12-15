@@ -1,25 +1,17 @@
-import {products} from '../mocks/products.json'
+import { products } from "../mocks/products.json";
 
 export default function ShirtCard() {
   return (
-    <div>
-      <ul>
-        {
-          products.map(product => (
-            <li key={product.id}>
-              <img src={product.image} alt={product.description} />
-              <div>
-                <strong>{product.title}</strong> - ${product.price}
-              </div>
-              <div>
-                <button>
-                  Añadir al carrito
-                </button>
-              </div>
-            </li>
-          ))
-        }
-      </ul>
+    <div className="products-list">
+      {products.map((proudct) => (
+        <div className="card-content">
+          <img src={proudct.image} />
+          <h3>{proudct.title}</h3>
+          <p>{proudct.description}</p>
+          <p>{proudct.price}</p>
+          <button>Añadir al carrito</button>
+        </div>
+      ))}
     </div>
   );
 }

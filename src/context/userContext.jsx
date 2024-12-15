@@ -10,10 +10,14 @@ export function UserProvider ({children}){
         username: null,
         role: null
     })
+
+    const [showLoginModal, setShowLoginModal] = useState (false)
     return (
         <userContext.Provider value={{
             user,
-            setUser
+            setUser,
+            showLoginModal,
+            setShowLoginModal
         }}>
             {children}
         </userContext.Provider>

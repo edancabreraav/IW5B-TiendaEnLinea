@@ -4,7 +4,7 @@ import { users } from "../mocks/users.json";
 import "../css/login.css";
 
 export default function Login() {
-  const { setUser } = useContext(userContext);
+  const { setUser, setShowLoginModal } = useContext(userContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,6 +21,7 @@ export default function Login() {
         username: user.username,
         role: user.role,
       });
+      setShowLoginModal(false)
       alert("Bienvenido");
     } else {
       alert("Credenciales incorrectas");
@@ -30,6 +31,7 @@ export default function Login() {
   return (
     <div className="modal">
       <div className="modal-content">
+        <button onClick={()=> setShowLoginModal(false)}>x</button>
         <h2>Iniciar Sesión</h2>
         <form onSubmit={handleLogin}>
           <label htmlFor="email">Email</label>
