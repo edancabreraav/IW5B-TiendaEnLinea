@@ -7,9 +7,9 @@ import { cartContext } from "../context/cartContext";
 import Cart from "../components/Cart"
 
 export default function ShirtCard() {
-  const { user } = useContext(userContext);
+  const { user, setShowLoginModal } = useContext(userContext);
   const { showAddProductModal, products, setProducts } = useContext(productContext);
-  const {cart, addToCart} = useContext(cartContext)
+  const {cart, addToCart, removeFromCart, setIsOpen} = useContext(cartContext)
 
   const [editingProductId, setEditingProductId] = useState(null);
   const [editedProduct, setEditedProduct] = useState({
@@ -66,15 +66,32 @@ export default function ShirtCard() {
               {/*Mostrar los botones de acuerdo al rol del usuario*/}
               {user.role === "admin" ? (
                 <div>
-                  <button onClick={() => startEditing(product)}>
-                    Modificar
-                  </button>
-                  <button onClick={() => deleteProduct(product.id)}>
-                    Dar de baja
-                  </button>
+                  <button onClick={() => startEditing(product)}>Modificar</button>
+                  <button onClick={() => deleteProduct(product.id)}>Dar de baja</button>
                 </div>
               ) : (
-                <button onClick={() => addToCart(product)}>Añadir al carrito</button>
+                <div>
+                {/*Verificar si el producto ya existe en el carrito*/}
+                {cart.some((item) => item.id === product.id) ? (
+                  <button onClick={() => {removeFromCart(product)}}>
+                    Eliminar del carrito
+                  </button>
+                ) : (
+                  //Añadir si el producto no existe en el carrito
+                  <button
+                    onClick={() => {
+                      if (user.username !== null) {
+                        setIsOpen(true);
+                        addToCart(product); // Añade el producto al carrito
+                      } else {
+                        setShowLoginModal(true);
+                      }
+                    }}
+                  >
+                    Añadir al carrito
+                  </button>
+                )}
+              </div>
               )}
             </div>
           ) : (
@@ -117,7 +134,7 @@ export default function ShirtCard() {
       ))}
       {/*Mostrar El formulario para añadir productos*/}
       {showAddProductModal && <ShirtForm />}
-      <Cart></Cart>
+      <Cart/>
     </div>
   );
 }

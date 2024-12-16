@@ -6,6 +6,7 @@ export const cartContext = createContext();
 //2. Crear el provider
 export function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
+  const [isOpen, setIsOpen] = useState(false)
 
 //Función para añadir un producto al carrito
   const addToCart = (product) => {
@@ -44,6 +45,8 @@ export function CartProvider({ children }) {
         addToCart,
         clearCart,
         removeFromCart,
+        isOpen,
+        setIsOpen
       }}
     >
       {children}

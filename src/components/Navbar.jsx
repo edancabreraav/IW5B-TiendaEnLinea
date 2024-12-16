@@ -1,10 +1,13 @@
 import React, { useContext } from "react";
 import { userContext } from "../context/userContext";
 import { productContext } from "../context/productContext";
+import { cartContext } from "../context/cartContext";
 
 const Navbar = () => {
   const { setShowLoginModal, user, setUser } = useContext(userContext);
   const {setShowAddProductModal} = useContext(productContext)
+  const {isOpen, setIsOpen} = useContext(cartContext)
+  const toggleCart = () => setIsOpen(!isOpen);
 
   return (
     <div className="navbar">
@@ -28,7 +31,7 @@ const Navbar = () => {
         >
           Cerrar Sesión
         </button>
-        {user.role === 'client' && <button className="navbar-button">Carrito</button>}
+        {user.role === 'client' && <button className="navbar-button" onClick={toggleCart}>Carrito</button>}
         </div>
       )}
     </div>
