@@ -30,7 +30,7 @@ export default function Login() {
   return (
     <div className="modal">
       <div className="form-container">
-        <button onClick={()=> setShowLoginModal(false)}>x</button>
+        <button onClick={()=> setShowLoginModal(false)} className="btn-closeModal">x</button>
         <form onSubmit={handleLogin}>
         <h2>Iniciar Sesión</h2>
         <div className="input-group">
@@ -52,7 +52,7 @@ export default function Login() {
             placeholder="Ingresa tu contraseña"
           />
           </div>
-          <button type="submit">Login</button>
+          <button type="submit" className="btn-submit">Login</button>
         </form>
       </div>
     </div>

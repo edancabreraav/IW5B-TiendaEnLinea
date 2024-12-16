@@ -28,7 +28,7 @@ export default function ShirtForm() {
   return (
     <div className="modal">
       <div className="form-container">
-      <button onClick={()=> setShowAddProductModal(false)}>x</button>
+      <button onClick={()=> setShowAddProductModal(false)} className="btn-closeModal">x</button>
         <form onSubmit={handleSubmit}>
           <h2>Añadir producto</h2>
           <div className="input-group">
@@ -65,7 +65,7 @@ export default function ShirtForm() {
               placeholder="Ingresa el precio del producto"
             />
           </div>
-          <button type="submit">Agregar producto</button>
+          <button type="submit" className="btn-submit">Agregar producto</button>
         </form>
       </div>
     </div>
