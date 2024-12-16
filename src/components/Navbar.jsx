@@ -41,12 +41,12 @@ const Navbar = () => {
           )}
           {/*Renderizado condicional para mostrar el botón de Añadir producto sólo en caso de ser administrador*/}
           {user.role === "admin" && (
-            <button
+            <Link to='/catalogo'><button
               className="navbar-button"
               onClick={() => setShowAddProductModal(true)}
             >
               Añadir producto
-            </button>
+            </button></Link>
           )}
         </div>
       )}
