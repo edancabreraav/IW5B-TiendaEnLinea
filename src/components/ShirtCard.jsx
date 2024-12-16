@@ -54,6 +54,8 @@ export default function ShirtCard() {
     setProducts(products.filter((product) => product.id !== id));
 
   return (
+    <div>
+    <h2>Catálogo</h2>
     <div className="products-list">
       {products.map((product) => (
         <div key={product.id} className="card-content">
@@ -135,6 +137,7 @@ export default function ShirtCard() {
       {/*Mostrar El formulario para añadir productos*/}
       {showAddProductModal && <ShirtForm />}
       <Cart/>
+    </div>
     </div>
   );
 }

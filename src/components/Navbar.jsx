@@ -5,15 +5,13 @@ import { cartContext } from "../context/cartContext";
 
 const Navbar = () => {
   const { setShowLoginModal, user, setUser } = useContext(userContext);
-  const {setShowAddProductModal} = useContext(productContext)
-  const {isOpen, setIsOpen} = useContext(cartContext)
+  const { setShowAddProductModal } = useContext(productContext);
+  const { isOpen, setIsOpen } = useContext(cartContext);
   const toggleCart = () => setIsOpen(!isOpen);
 
   return (
     <div className="navbar">
-
-      {/*Renderizado condicional para mostrar el botón de Añadir producto sólo en caso de ser administrador*/}
-      {user.role === 'admin' && <button className="navbar-button" onClick={()=> setShowAddProductModal(true)}>Añadir producto</button>}
+      <h2>Hero-Shop</h2>
 
       {/*Renderizado condicional del botón para iniciar/cerrar sesión*/}
       {user.username === null ? (
@@ -25,13 +23,26 @@ const Navbar = () => {
         </button>
       ) : (
         <div>
-        <button
-          className="navbar-button"
-          onClick={() => setUser({ email: null, username: null, role: null })}
-        >
-          Cerrar Sesión
-        </button>
-        {user.role === 'client' && <button className="navbar-button" onClick={toggleCart}>Carrito</button>}
+          <button
+            className="navbar-button"
+            onClick={() => setUser({ email: null, username: null, role: null })}
+          >
+            Cerrar Sesión
+          </button>
+          {user.role === "client" && (
+            <button className="navbar-button" onClick={toggleCart}>
+              Carrito
+            </button>
+          )}
+          {/*Renderizado condicional para mostrar el botón de Añadir producto sólo en caso de ser administrador*/}
+          {user.role === "admin" && (
+            <button
+              className="navbar-button"
+              onClick={() => setShowAddProductModal(true)}
+            >
+              Añadir producto
+            </button>
+          )}
         </div>
       )}
     </div>

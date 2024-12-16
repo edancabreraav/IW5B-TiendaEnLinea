@@ -20,6 +20,8 @@ function CartItem({ image, price, title, quantity, addToCart }) {
 export default function Cart() {
   const { cart, clearCart, addToCart, isOpen } = useContext(cartContext);
 
+  const subtotal = cart.reduce((acc, product) => acc + product.price * product.quantity, 0);
+
   return (
     <div>
       <aside className={`cart ${isOpen ? "open" : ""}`}>
@@ -33,6 +35,12 @@ export default function Cart() {
           ))}
         </ul>
         <button onClick={clearCart}>Limpiar carrito</button>
+        
+        <div className="subtotal">
+          <p>Subtotal </p>
+          <p className="precio">${subtotal}</p>
+        </div>
+        <button className="btn-pagar">Pagar</button>
       </aside>
     </div>
   );
