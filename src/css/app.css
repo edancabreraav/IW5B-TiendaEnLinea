@@ -1,14 +1,19 @@
 body {
   margin: 0;
   padding: 0;
+  height: 100%;
 }
 
 .App {
   font-family: Arial, sans-serif;
   text-align: center;
+  min-height: 100vh; 
+  display: flex;     
+  flex-direction: column; 
 }
 
 .products-list {
+  flex: 1;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -181,4 +186,55 @@ body {
 }
 .btn-closeModal:hover{
   background-color: #c0392b;
+}
+
+:root {
+  --main-blue: #4a90e2;
+  --hover-blue: #3686c1;
+  --white: #ffffff;
+  --dark-gray: #333333;
+}
+
+.footer {
+  background-color: var(--dark-gray);
+  color: var(--white);
+  padding: 10px 0;
+  text-align: center;
+  margin-top: auto;
+  /* Esto asegura que el footer se quede al final */
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-text {
+  font-size: 0.9rem;
+  color: var(--white);
+  margin: 0;
+}
+
+.footer-button {
+  background-color: var(--main-blue);
+  color: var(--white);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.footer-button:hover {
+  background-color: var(--hover-blue);
+  transform: scale(1.05);
+}
+
+.footer-button:active {
+  transform: scale(0.95);
 }
