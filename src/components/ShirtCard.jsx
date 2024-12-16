@@ -1,26 +1,28 @@
 import { useContext } from "react";
 import { userContext } from "../context/userContext";
-import { products } from "../mocks/products.json";
 import ShirtForm from "./ShirtForm";
 import { productContext } from "../context/productContext";
 
 export default function ShirtCard() {
   const { user } = useContext(userContext)
-  const {showAddProductModal} = useContext(productContext)
+  const {showAddProductModal, products, setProducts} = useContext(productContext)
+
+  const deleteProduct = (id) => setProducts(products.filter((product)=>product.id !==id))
+  
 
   return (
     
     <div className="products-list">
-      {products.map((proudct) => (
-        <div className="card-content">
-          <img src={proudct.image} />
-          <h3>{proudct.title}</h3>
-          <p>{proudct.description}</p>
-          <p>${proudct.price}</p>
+      {products.map((product) => (
+        <div key={product.id} className="card-content">
+          <img src={product.image} />
+          <h3>{product.title}</h3>
+          <p>{product.description}</p>
+          <p>${product.price}</p>
           {user.role === 'admin'?(
             <div>
             <button>Modificar</button>
-            <button>Dar de baja</button>
+            <button onClick={() => deleteProduct(product.id)}>Dar de baja</button>
             </div>
             
             ):(<button>Añadir al carrito</button>)}
