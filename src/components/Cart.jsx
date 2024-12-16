@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { cartContext } from "../context/cartContext";
 import "../css/cart.css";
 
@@ -18,13 +18,14 @@ function CartItem({ image, price, title, quantity, addToCart }) {
 }
 
 export default function Cart() {
-  const { cart, clearCart, addToCart, isOpen } = useContext(cartContext);
+  const { cart, clearCart, addToCart, isOpen, setIsOpen } = useContext(cartContext);
 
   const subtotal = cart.reduce((acc, product) => acc + product.price * product.quantity, 0);
 
   return (
     <div>
       <aside className={`cart ${isOpen ? "open" : ""}`}>
+      {/* <button onClick={()=> setIsOpen(false)} className="btn-closeCarrito">x</button> */}
         <ul>
           {cart.map((product) => (
             <CartItem

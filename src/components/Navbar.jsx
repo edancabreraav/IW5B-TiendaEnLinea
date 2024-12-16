@@ -17,7 +17,7 @@ const Navbar = () => {
       <div className="navbar-buttons">
       <Link to="/" className="navbar-button">Inicio</Link>
       <Link to="/catalogo" className="navbar-button">Catálogo</Link>
-
+      
       {/*Renderizado condicional del botón para iniciar/cerrar sesión*/}
       {user.username === null ? (
         <button
