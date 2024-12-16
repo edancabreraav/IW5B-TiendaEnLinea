@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { userContext } from "../context/userContext";
 import { productContext } from "../context/productContext";
 import { cartContext } from "../context/cartContext";
@@ -11,7 +12,11 @@ const Navbar = () => {
 
   return (
     <div className="navbar">
-      <h2>Hero-Shop</h2>
+      <Link to='/' className="logo"><h2>Hero-Shop</h2></Link>
+      {user.username!==null && <p>Bienvenido <strong>{user.username}</strong></p>}
+      <div className="navbar-buttons">
+      <Link to="/" className="navbar-button">Inicio</Link>
+      <Link to="/catalogo" className="navbar-button">Catálogo</Link>
 
       {/*Renderizado condicional del botón para iniciar/cerrar sesión*/}
       {user.username === null ? (
@@ -23,12 +28,12 @@ const Navbar = () => {
         </button>
       ) : (
         <div>
-          <button
+          <Link to='/'><button
             className="navbar-button"
             onClick={() => setUser({ email: null, username: null, role: null })}
           >
             Cerrar Sesión
-          </button>
+          </button></Link>
           {user.role === "client" && (
             <button className="navbar-button" onClick={toggleCart}>
               Carrito
@@ -45,6 +50,7 @@ const Navbar = () => {
           )}
         </div>
       )}
+      </div>
     </div>
   );
 };

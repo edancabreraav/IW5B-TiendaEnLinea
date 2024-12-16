@@ -1,21 +1,28 @@
-
 import { useContext } from "react";
-import Navbar from "./components/Navbar"
-import Login from "./components/Login"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Login from "./components/Login";
 import ShirtCard from "./components/ShirtCard";
 import Footer from "./components/Footer";
+import Home from "./components/Home";
 import { userContext } from "./context/userContext";
-import './css/app.css'
+import "./css/app.css";
 
 export default function App() {
-  const {showLoginModal} = useContext(userContext);
+  const { showLoginModal } = useContext(userContext);
 
   return (
-    <div className="App">
-      <Navbar/>
-      {showLoginModal && <Login/>}
-      <ShirtCard/>
-      <Footer/>
-    </div>
-  )
+    <Router>
+      <div className="App">
+        <Navbar />
+        {showLoginModal && <Login />}
+        {/* <ShirtCard/> */}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/catalogo" element={<ShirtCard />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
+  );
 }

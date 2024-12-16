@@ -1,0 +1,84 @@
+/* Contenedor general para centrar el contenido */
+body {
+    font-family: 'Poppins', 'Quicksand', sans-serif;
+    color: var(--dark-gray);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px; /* Limita el ancho del contenido */
+    margin: 0 auto; /* Centra horizontalmente */
+    padding: 0 20px; /* Agrega espacio en los lados para pantallas pequeñas */
+}
+
+.hero-section {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: var(--light-blue);
+    color: var(--dark-gray);
+}
+
+.hero-button {
+    background-color: var(--main-blue);
+    color: var(--white);
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+}
+
+.hero-button:hover {
+    background-color: var(--dark-gray);
+    color: var(--white);
+}
+
+/* Estilos del banner */
+.banner-section {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.banner-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Sección de Preguntas Frecuentes */
+.faq-section {
+    padding: 40px 20px;
+    background-color: var(--white);
+    color: var(--dark-gray);
+    text-align: center;
+}
+
+.faq-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.faq-item {
+    background-color: var(--light-blue);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.faq-item h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--main-blue);
+}
+
+/* Estilos del mapa */
+.location-section {
+    padding: 40px 20px;
+    background-color: var(--light-gray);
+    text-align: center;
+}
+
+.map-container iframe {
+    border-radius: 8px;
+}

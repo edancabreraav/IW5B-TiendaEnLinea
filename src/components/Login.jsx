@@ -1,12 +1,15 @@
 import { useContext, useState } from "react";
 import { userContext } from "../context/userContext";
 import { users } from "../mocks/users.json";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 export default function Login() {
   const { setUser, setShowLoginModal } = useContext(userContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate()
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -22,6 +25,7 @@ export default function Login() {
       });
       setShowLoginModal(false)
       alert("Bienvenido");
+      navigate('/catalogo')
     } else {
       alert("Credenciales incorrectas");
     }
