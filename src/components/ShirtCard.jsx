@@ -3,11 +3,13 @@ import { userContext } from "../context/userContext";
 import ShirtForm from "./ShirtForm";
 import { productContext } from "../context/productContext";
 import { useState } from "react";
+import { cartContext } from "../context/cartContext";
+import Cart from "../components/Cart"
 
 export default function ShirtCard() {
   const { user } = useContext(userContext);
-  const { showAddProductModal, products, setProducts } =
-    useContext(productContext);
+  const { showAddProductModal, products, setProducts } = useContext(productContext);
+  const {cart, addToCart} = useContext(cartContext)
 
   const [editingProductId, setEditingProductId] = useState(null);
   const [editedProduct, setEditedProduct] = useState({
@@ -72,7 +74,7 @@ export default function ShirtCard() {
                   </button>
                 </div>
               ) : (
-                <button>Añadir al carrito</button>
+                <button onClick={() => addToCart(product)}>Añadir al carrito</button>
               )}
             </div>
           ) : (
@@ -115,6 +117,7 @@ export default function ShirtCard() {
       ))}
       {/*Mostrar El formulario para añadir productos*/}
       {showAddProductModal && <ShirtForm />}
+      <Cart></Cart>
     </div>
   );
 }

@@ -21,12 +21,15 @@ const Navbar = () => {
           Iniciar Sesión
         </button>
       ) : (
+        <div>
         <button
           className="navbar-button"
           onClick={() => setUser({ email: null, username: null, role: null })}
         >
           Cerrar Sesión
         </button>
+        {user.role === 'client' && <button className="navbar-button">Carrito</button>}
+        </div>
       )}
     </div>
   );
