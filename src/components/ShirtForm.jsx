@@ -20,9 +20,9 @@ export default function ShirtForm() {
       };
 
       const handleSubmit = (e) => {
-        e.preventDefault(); // Prevenir recarga de página
+        e.preventDefault();
         setProducts([...products, { ...newProduct, id: products.length + 1 }]);
-        setShowAddProductModal(false); // Cierra el modal
+        setShowAddProductModal(false);
       };
 
   return (

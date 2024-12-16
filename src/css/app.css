@@ -50,6 +50,19 @@ body {
   transition: background-color 0.3s, transform 0.3s;
 }
 
+.card-content input {
+  margin: 5px;
+  padding: 12px;
+  width: 200px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  transition: border 0.3s;
+}
+
+.card-content input:hover {
+  border-color: #3498db;
+}
+
 .card-content button:hover {
   background-color: #c0392b;
   transform: translateY(-2px);
