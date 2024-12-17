@@ -1,16 +1,16 @@
-import { useContext } from "react";
-import { userContext } from "../context/userContext";
+import { useContext, useState } from "react";
 import ShirtForm from "./ShirtForm";
-import { productContext } from "../context/productContext";
-import { useState } from "react";
-import { cartContext } from "../context/cartContext";
 import Cart from "../components/Cart"
+import { userContext } from "../context/userContext";
+import { productContext } from "../context/productContext";
+import { cartContext } from "../context/cartContext";
 
 export default function ShirtCard() {
   const { user, setShowLoginModal } = useContext(userContext);
-  const { showAddProductModal, products, setProducts } = useContext(productContext);
+  const { showAddProductModal, products, setProducts, deleteProduct } = useContext(productContext);
   const {cart, addToCart, removeFromCart, setIsOpen} = useContext(cartContext)
 
+  //---Lógica para edición---
   const [editingProductId, setEditingProductId] = useState(null);
   const [editedProduct, setEditedProduct] = useState({
     title: "",
@@ -48,10 +48,7 @@ export default function ShirtCard() {
     );
     setEditingProductId(null);
   };
-
-  //Funcion para eliminar un producto
-  const deleteProduct = (id) =>
-    setProducts(products.filter((product) => product.id !== id));
+  //---Fin de lógica para edición---
 
   return (
     <div>

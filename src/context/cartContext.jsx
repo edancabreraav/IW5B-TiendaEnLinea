@@ -8,7 +8,7 @@ export function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
   const [isOpen, setIsOpen] = useState(false)
 
-//Función para añadir un producto al carrito
+  //Función para añadir un producto al carrito
   const addToCart = (product) => {
     //Verificar si el producto ya está en el carrito
     const productInCartIndex = cart.findIndex((item) => item.id === product.id);
@@ -27,12 +27,12 @@ export function CartProvider({ children }) {
     ]);
   };
 
-  //Función para eliminar del carrito
+  //Función para eliminar un producto del carrito
   const removeFromCart = (product) => {
     setCart((prevState) => prevState.filter((item) => item.id !== product.id));
   };
 
-  //Función para quitar todos los productos del carrito
+  //Función para quitar TODOS los productos del carrito
   const clearCart = () => {
     setCart([]);
   };
