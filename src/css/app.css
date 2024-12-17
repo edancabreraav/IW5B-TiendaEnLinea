@@ -44,7 +44,7 @@ body {
   margin-bottom: 15px;
 }
 
-.card-content p {
+.card-content p, h3 {
   word-wrap: break-word;
 }
 

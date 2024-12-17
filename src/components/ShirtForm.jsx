@@ -36,6 +36,7 @@ export default function ShirtForm() {
             <input
               type="text"
               id="title"
+              maxLength={40}
               onChange={handleChange}
               value={newProduct.title}
               placeholder="Ingresa el nombre del producto"

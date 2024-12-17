@@ -98,6 +98,7 @@ export default function ShirtCard() {
               <input 
                 type="text" 
                 name="title"
+                maxLength={30}
                 placeholder="Nombre del producto"
                 value={editedProduct.title}
                 onChange={handleEditChange}
