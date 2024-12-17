@@ -112,6 +112,7 @@ export default function ShirtCard() {
               <input 
                 type="text"
                 name="description"
+                maxLength={60}
                 placeholder="Descripción del producto" 
                 value={editedProduct.description}
                 onChange={handleEditChange}

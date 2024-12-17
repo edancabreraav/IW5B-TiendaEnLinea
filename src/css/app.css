@@ -44,6 +44,10 @@ body {
   margin-bottom: 15px;
 }
 
+.card-content p {
+  word-wrap: break-word;
+}
+
 .card-content button {
   background-color: #e74c3c;
   color: white;
