@@ -2,17 +2,31 @@
     "products":[
         {
             "id":1,
-            "title":"Playera básica",
-            "image":"https://image.hm.com/assets/hm/ef/0c/ef0c6957df141cde4f240b9a897f86c37b47fa53.jpg?imwidth=2160",
-            "description":"Playera básica color café",
-            "price":299
+            "title":"Hoodie Pokémon",
+            "image":"https://image.hm.com/assets/hm/50/80/50801e4162726b527169d23f9f67291219bedbb4.jpg?imwidth=2160",
+            "description":"Sudadera edición especial de Pokémon",
+            "price":499
         },
         {
             "id":2,
-            "title":"Abrigo",
-            "image":"https://image.hm.com/assets/hm/aa/d1/aad15bcb0f08df6c93fc85b220336bebe0e9f36e.jpg?imwidth=2160",
-            "description":"Abrigo color café",
-            "price":499
+            "title":"Casco a escala de Master Chief",
+            "image":"https://m.media-amazon.com/images/I/51qYRmRI+cL._AC_SL1000_.jpg",
+            "description":"Casco coleccionable de Master Chief",
+            "price":1899
+        },
+        {
+            "id":3,
+            "title":"Funko POP! Naruto",
+            "image":"https://m.media-amazon.com/images/I/612Oq+vbPFL._AC_SL1100_.jpg",
+            "description":"Figura coleccionable Funko POP! Naruto Seis Caminos, brilla en la oscuridad",
+            "price":299
+        },
+        {
+            "id":4,
+            "title":"Taza Zelda",
+            "image":"https://m.media-amazon.com/images/I/91q3IRk+xiL._AC_SL1500_.jpg",
+            "description":"Taza coleccionable de The Legend of Zelda",
+            "price":199
         }
     ]
 }
