@@ -1,4 +1,12 @@
 /* Contenedor general para centrar el contenido */
+:root {
+    --main-blue: #4a90e2;
+    --light-blue: #e0f7ff;
+    --white: #ffffff;
+    --dark-gray: #333333;
+    --light-gray: #f7f7f7;
+}
+
 body {
     font-family: 'Poppins', 'Quicksand', sans-serif;
     color: var(--dark-gray);
