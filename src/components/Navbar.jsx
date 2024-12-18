@@ -7,7 +7,7 @@ import { cartContext } from "../context/cartContext";
 const Navbar = () => {
   const { setShowLoginModal, user, setUser } = useContext(userContext);
   const { setShowAddProductModal } = useContext(productContext);
-  const { isOpen, setIsOpen } = useContext(cartContext);
+  const { isOpen, setIsOpen, setCart } = useContext(cartContext);
   const toggleCart = () => setIsOpen(!isOpen);
 
   return (
@@ -30,7 +30,7 @@ const Navbar = () => {
         <div>
           <Link to='/'><button
             className="navbar-button"
-            onClick={() => setUser({ email: null, username: null, role: null })}
+            onClick={() => {setUser({ email: null, username: null, role: null }); setIsOpen(false); setCart([]);} }
           >
             Cerrar Sesión
           </button></Link>
