@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { userContext } from "../context/userContext";
 import { users } from "../mocks/users.json";
+import { ExitIcon } from "./Icons"
 
 
 export default function Login() {
@@ -35,7 +36,9 @@ export default function Login() {
   return (
     <div className="modal">
       <div className="form-container">
-        <button onClick={()=> setShowLoginModal(false)} className="btn-closeModal">x</button>
+        <div className="form-header">
+        <button onClick={()=> setShowLoginModal(false)} className="btn-closeModal"><ExitIcon/></button>
+        </div>
         <form onSubmit={handleLogin}>
         <h2>Iniciar Sesión</h2>
         <div className="input-group">

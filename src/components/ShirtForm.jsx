@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { productContext } from "../context/productContext";
+import { ExitIcon } from "./Icons"
 
 export default function ShirtForm() {
     const {setShowAddProductModal, products, setProducts} = useContext(productContext)
@@ -28,7 +29,10 @@ export default function ShirtForm() {
   return (
     <div className="modal">
       <div className="form-container">
-      <button onClick={()=> setShowAddProductModal(false)} className="btn-closeModal">x</button>
+        <div className="form-header">
+      <button onClick={()=> setShowAddProductModal(false)} 
+      className="btn-closeModal"><ExitIcon/></button>
+      </div>
         <form onSubmit={handleSubmit}>
           <h2>Añadir producto</h2>
           <div className="input-group">

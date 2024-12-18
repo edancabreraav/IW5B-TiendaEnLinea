@@ -155,6 +155,11 @@ body {
   box-sizing: border-box;
 }
 
+.form-header {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .input-group {
   margin-bottom: 20px;
   text-align: left;
