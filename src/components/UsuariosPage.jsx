@@ -7,7 +7,7 @@ const StyledTable = styled.table`
   margin: 20px auto;
   border-collapse: collapse;
   width: 85%;
-  text-align: center; /* Centrar datos */
+  text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 `;
 
@@ -56,7 +56,7 @@ const SearchInput = styled.input`
 
   &:focus {
     outline: none;
-    border-color: #003366; /* Azul rey */
+    border-color: #003366;
   }
 `;
 
@@ -79,7 +79,7 @@ const FormButton = styled.button`
   background-color: ${(props) => props.color || "#003366"};
   color: white;
   border: 1px solid ${(props) => props.color || "#003366"};
-  border-radius: 20px; /* Bordes redondeados */
+  border-radius: 20px;
   cursor: pointer;
   margin: 5px 10px;
 
@@ -108,7 +108,7 @@ const SortButton = styled.button`
   }
 `;
 
-const CenteredTable = ({ data, columns, onEdit, onDelete }) => {
+const CenteredTable = ({ data, columns, onEdit, onDelete, onSort }) => {
   return (
     <StyledTable>
       <thead>
@@ -162,7 +162,7 @@ const UsuariosPage = () => {
     email: "",
     username: "",
     password: "",
-    role: "",
+    role: "client", // Valor por defecto
     profilePic: "",
     createdAt: "",
   });
@@ -190,6 +190,11 @@ const UsuariosPage = () => {
   };
 
   const handleCreate = () => {
+    // Verificar que el email sea único
+    if (users.some((user) => user.email === formData.email)) {
+      return alert("El correo electrónico ya está registrado");
+    }
+
     if (!formData.email || !formData.username || !formData.password || !formData.role) {
       return alert("Todos los campos son obligatorios");
     }
@@ -221,101 +226,97 @@ const UsuariosPage = () => {
   const handleSort = (key) => {
     const newDirection =
       sortConfig.key === key && sortConfig.direction === "asc" ? "desc" : "asc";
-
     setSortConfig({ key, direction: newDirection });
-    setUsers((prevUsers) =>
-      [...prevUsers].sort((a, b) => {
-        if (a[key] < b[key]) return newDirection === "asc" ? -1 : 1;
-        if (a[key] > b[key]) return newDirection === "asc" ? 1 : -1;
-        return 0;
-      })
-    );
+
+    const sortedUsers = [...users].sort((a, b) => {
+      if (a[key] < b[key]) return sortConfig.direction === "asc" ? -1 : 1;
+      if (a[key] > b[key]) return sortConfig.direction === "asc" ? 1 : -1;
+      return 0;
+    });
+
+    setUsers(sortedUsers);
   };
+
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const filteredUsers = users.filter(
+    (user) =>
+      user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      user.username.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   const resetForm = () => {
     setFormData({
       email: "",
       username: "",
       password: "",
-      role: "",
+      role: "client",
       profilePic: "",
       createdAt: "",
     });
   };
 
-  const filteredUsers = users.filter((user) =>
-    Object.values(user)
-      .join(" ")
-      .toLowerCase()
-      .includes(searchTerm.toLowerCase())
-  );
-
   return (
     <div>
-      <h1>Administración de usuarios</h1>
+      <h1 style={{ textAlign: "center" }}>Administrar Usuarios</h1>
       <SearchContainer>
         <SearchInput
           type="text"
-          placeholder="Buscar..."
+          placeholder="Buscar por correo o nombre"
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          onChange={handleSearch}
         />
-        <SortButton onClick={() => handleSort("username")}>
-          {sortConfig.key === "username" && sortConfig.direction === "asc" ? (
-            <FaSortAlphaUp />
-          ) : (
-            <FaSortAlphaDown />
-          )}
-        </SortButton>
-        <SortButton onClick={() => handleSort("createdAt")}>
-          <FaClock />
-        </SortButton>
       </SearchContainer>
 
       <FormContainer>
-        <h2>{formData.email ? "Editar Usuario" : "Crear Usuario"}</h2>
         <FormInput
-          type="text"
+          type="email"
           name="email"
-          placeholder="Email"
+          placeholder="Correo electrónico"
           value={formData.email}
           onChange={handleInputChange}
         />
         <FormInput
           type="text"
           name="username"
-          placeholder="Username"
+          placeholder="Nombre de usuario"
           value={formData.username}
           onChange={handleInputChange}
         />
         <FormInput
           type="password"
           name="password"
-          placeholder="Password"
+          placeholder="Contraseña"
           value={formData.password}
           onChange={handleInputChange}
         />
-        <FormInput
-          type="text"
+        <select
           name="role"
-          placeholder="Role"
           value={formData.role}
           onChange={handleInputChange}
+        >
+          <option value="client">Cliente</option>
+          <option value="admin">Administrador</option>
+        </select>
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleImageChange}
         />
-        <FormInput type="file" accept="image/*" onChange={handleImageChange} />
-        <div>
-          <FormButton color="#28a745" onClick={handleCreate}>
-            Crear
-          </FormButton>
-          <FormButton
-            color="#4a90e2"
-            onClick={handleUpdate}
-            disabled={!formData.email}
-          >
-            Actualizar
-          </FormButton>
-        </div>
+        <FormButton color="#28a745" onClick={handleCreate}>Crear</FormButton>
+        <FormButton color="#4a90e2" onClick={handleUpdate}>Actualizar</FormButton>
       </FormContainer>
+
+      <div style={{ textAlign: "center", marginBottom: "10px" }}>
+        <SortButton onClick={() => handleSort("email")}>
+          <FaSortAlphaDown /> Ordenar por email
+        </SortButton>
+        <SortButton onClick={() => handleSort("createdAt")}>
+          <FaClock /> Ordenar por Fecha
+        </SortButton>
+      </div>
 
       <CenteredTable
         data={filteredUsers}
