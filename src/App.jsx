@@ -7,11 +7,15 @@ import Footer from "./components/Footer";
 import Home from "./components/Home";
 import { userContext } from "./context/userContext";
 import "./css/app.css";
+import UsuariosPage from "./components/UsuariosPage";
+
+
 
 export default function App() {
   const { showLoginModal } = useContext(userContext);
 
   return (
+    
     <Router>
       <div className="App">
         <Navbar />
@@ -20,6 +24,8 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/catalogo" element={<ShirtCard />} />
+          <Route path="/usuarios" element={<UsuariosPage />} />
+
         </Routes>
         <Footer />
       </div>
