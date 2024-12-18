@@ -108,7 +108,8 @@ const SortButton = styled.button`
   }
 `;
 
-const CenteredTable = ({ data, columns, onEdit, onDelete, onSort }) => {
+const CenteredTable = ({ data, columns, onEdit, onDelete, onSort, currentUser }) => {
+  console.log(currentUser)
   return (
     <StyledTable>
       <thead>
@@ -136,9 +137,10 @@ const CenteredTable = ({ data, columns, onEdit, onDelete, onSort }) => {
                 <FormButton color="#4a90e2" onClick={() => onEdit(row)}>
                   Editar
                 </FormButton>
+                {data[index].email !== currentUser.email &&
                 <FormButton color="#FF0000" onClick={() => onDelete(row.email)}>
                   Eliminar
-                </FormButton>
+                </FormButton>}
               </StyledTd>
             </StyledTr>
           ))
@@ -155,7 +157,7 @@ const CenteredTable = ({ data, columns, onEdit, onDelete, onSort }) => {
 };
 
 const UsuariosPage = () => {
-  const {users, setUsers} = useContext(userContext);
+  const {users, setUsers, user} = useContext(userContext);
 
   const [searchTerm, setSearchTerm] = useState("");
   const [formData, setFormData] = useState({
@@ -319,6 +321,7 @@ const UsuariosPage = () => {
       </div>
 
       <CenteredTable
+        currentUser={user}
         data={filteredUsers}
         columns={columns}
         onEdit={handleEdit}
