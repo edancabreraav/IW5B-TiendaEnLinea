@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { cartContext } from "../context/cartContext";
 import "../css/cart.css";
 
+import { ExitIcon, DeleteIcon } from "./Icons";
+
 function CartItem({ image, price, title, quantity, addToCart, removeFromCart }) {
   return (
     <li>
@@ -13,7 +15,7 @@ function CartItem({ image, price, title, quantity, addToCart, removeFromCart }) 
         <small>Cantidad: {quantity}</small>
         <button onClick={addToCart}>+</button>
       </footer>
-      <button onClick={removeFromCart}>Eliminar</button>
+      <button onClick={removeFromCart}><DeleteIcon/></button>
     </li>
   );
 }
@@ -26,7 +28,9 @@ export default function Cart() {
   return (
     <div>
       <aside className={`cart ${isOpen ? "open" : ""}`}>
-        <button onClick={() => setIsOpen(false)}>Ocultar</button>
+        <div className="cart-header">
+          <button onClick={() => setIsOpen(false)}><ExitIcon/></button>
+        </div>
         <ul>
           {cart.map((product) => (
             <CartItem
@@ -37,7 +41,7 @@ export default function Cart() {
             />
           ))}
         </ul>
-        <button onClick={clearCart}>Limpiar carrito</button>
+        <button onClick={clearCart}>Limpiar carrito <DeleteIcon/></button>
         
         <div className="subtotal">
           <p>Subtotal </p>
