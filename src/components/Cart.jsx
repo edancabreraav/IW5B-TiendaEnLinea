@@ -9,13 +9,13 @@ function CartItem({ image, price, title, quantity, addToCart, removeFromCart }) 
     <li>
       <img src={image} />
       <div>
-      <strong>{title}</strong> - ${price}
+        <strong>{title}</strong> - ${price}
       </div>
       <footer>
         <small>Cantidad: {quantity}</small>
-        <button onClick={addToCart}>+</button>
+        <button onClick={addToCart} className="btn-add">+</button>
       </footer>
-      <button onClick={removeFromCart}><DeleteIcon/></button>
+      <button onClick={removeFromCart} className="btn-remove"><DeleteIcon/></button>
     </li>
   );
 }
@@ -41,7 +41,7 @@ export default function Cart() {
             />
           ))}
         </ul>
-        <button onClick={clearCart}>Limpiar carrito <DeleteIcon/></button>
+        <button onClick={clearCart} className="btn-clean">Limpiar carrito <DeleteIcon/></button>
         
         <div className="subtotal">
           <p>Subtotal </p>

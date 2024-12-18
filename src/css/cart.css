@@ -10,7 +10,7 @@
   padding: 1rem;
   z-index: 1000;
   transition: right 0.3s ease-in-out;
-  display: flex; /* Flexbox para organizar los elementos */
+  display: flex;
   flex-direction: column; /* Apilar elementos verticalmente */
 }
 
@@ -47,20 +47,6 @@
   border-radius: 4px;
 }
 
-.cart button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 0.5rem 0.5rem;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 10px;
-}
-
-.cart-header button:hover {
-  color: #000;
-}
-
 .cart footer {
   display: flex;
   justify-content: space-between;
@@ -68,21 +54,9 @@
 }
 
 .cart footer small {
-  font-size: 14px;
-  color: #666;
-  margin-right: 0.5rem;
-}
-
-/* Botón "Limpiar carrito" */
-.cart > button {
-  align-self: center;
-  margin-top: 1rem;
   font-size: 16px;
-  padding: 0.75rem 1.5rem;
-  display: flex; /* Flexbox para alinear contenido */
-  align-items: center; /* Centrar verticalmente */
-  justify-content: center; /* Centrar horizontalmente */
-  gap: 0.5rem; /* Espaciado entre el texto y el icono */
+  color: #666;
+  margin-right: 1rem;
 }
 
 .subtotal {
@@ -99,10 +73,48 @@
   font-weight: bold;
 }
 
+.cart button {
+  color: white;
+  border: none;
+  padding: 0.5rem 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 10px;
+}
+
+.btn-clean, .btn-remove {
+  background-color: #e74c3c;
+}
+
+.btn-clean:hover, .btn-remove:hover {
+  background-color: #c0392b;
+}
+
+.btn-add {
+  background-color: #007bff;
+}
+
+.btn-add:hover {
+  background-color: #0056b3;
+}
+
+/* Botón "Limpiar carrito" */
+.cart > button {
+  align-self: center;
+  margin-top: 1rem;
+  font-size: 16px;
+  padding: 0.75rem 1.5rem;
+  display: flex; /* Flexbox para alinear contenido */
+  align-items: center; /* Centrar verticalmente */
+  justify-content: center; /* Centrar horizontalmente */
+  gap: 0.5rem; /* Espaciado entre el texto y el icono */
+}
+
+
 .btn-pagar {
+  background-color: #007bff;;
   width: 100%;
   padding: 1rem;
-  background-color: #28a745;
   color: white;
   font-size: 16px;
   font-weight: bold;
@@ -113,7 +125,7 @@
   margin-bottom: 2rem;
 }
 
-.cart button:hover {
+.btn-pagar:hover {
   background-color: #0056b3;
 }
 
@@ -124,4 +136,10 @@
   font-size: 1.5rem;
   color: #333;
   padding: 0.5rem;
+}
+
+.cart-header button:hover {
+  color: #c0392b;
+  transition: background-color 0.3s, transform 0.3s;
+  transform: translateY(-2px);
 }
