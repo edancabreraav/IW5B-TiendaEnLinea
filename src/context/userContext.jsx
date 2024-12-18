@@ -1,4 +1,5 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
+import { users as mockUsers } from "../mocks/users.json"
 
 //1. Crear el contexto
 export const userContext = createContext();
@@ -10,6 +11,11 @@ export function UserProvider ({children}){
         username: null,
         role: null
     })
+    const [users, setUsers] = useState([])
+
+    useEffect(() =>{
+        setUsers(mockUsers)
+    },[])
 
     const [showLoginModal, setShowLoginModal] = useState (false)
     return (
@@ -17,7 +23,9 @@ export function UserProvider ({children}){
             user,
             setUser,
             showLoginModal,
-            setShowLoginModal
+            setShowLoginModal,
+            users,
+            setUsers
         }}>
             {children}
         </userContext.Provider>

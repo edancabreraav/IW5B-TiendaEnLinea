@@ -1,12 +1,11 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { userContext } from "../context/userContext";
-import { users } from "../mocks/users.json";
 import { ExitIcon } from "./Icons"
 
 
 export default function Login() {
-  const { setUser, setShowLoginModal } = useContext(userContext);
+  const { setUser, setShowLoginModal, users } = useContext(userContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
